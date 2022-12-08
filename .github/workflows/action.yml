@@ -50,6 +50,9 @@ jobs:
       - name: Login to Container registry on prod
         run: ssh prod 'echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u "${{ github.actor }}" --password-stdin'
 
+      - name: Clone docker-compose
+        run: rsync -azvhP --delete $GITHUB_WORKSPACE/docker-compose-prod.yml prod:/home/github/app
+
       - name: Start app
         run: ssh prod 'cd app && touch githubwashere'
 

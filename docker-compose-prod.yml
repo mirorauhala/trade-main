@@ -1,0 +1,44 @@
+version: "3.1"
+
+networks:
+  web:
+    external:
+      name: web
+
+services:
+  strapi:
+    image:  ghcr.io/mirorauhala/trade-back:latest
+    restart: unless-stopped
+    networks:
+      - web
+    environment:
+      - URL=${URL}
+      - STRAPI_DISABLE_UPDATE_NOTIFICATION=true
+      - STRAPI_TELEMETRY_DISABLED=true
+      - NODE_ENV=production
+      - BROWSER=false
+      - HOST=0.0.0.0
+      - PORT=3000
+      - APP_KEYS=${APP_KEYS}
+      - API_TOKEN_SALT=${API_TOKEN_SALT}
+      - ADMIN_JWT_SECRET=${ADMIN_JWT_SECRET}
+      - JWT_SECRET=${JWT_SECRET}
+      - DATABASE_FILENAME=${DATABASE_FILENAME}
+    ports:
+      - "3001:3000"
+    volumes:
+      - ./strapi-data:/data
+
+  next:
+    image: ghcr.io/mirorauhala/trade-front:latest
+    restart: unless-stopped
+    depends_on:
+      - strapi
+    ports:
+      - "3000:3000"
+    networks:
+      - web
+    environment:
+      - STRAPI_ENDPOINT_URL=${STRAPI_ENDPOINT_URL}
+      - NEXT_PUBLIC_STRAPI_ENDPOINT_URL=${NEXT_PUBLIC_STRAPI_ENDPOINT_URL}
+      - STRAPI_API_KEY=${STRAPI_API_KEY}
