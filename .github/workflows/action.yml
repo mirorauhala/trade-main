@@ -48,7 +48,7 @@ jobs:
           docker push ghcr.io/mirorauhala/trade-back:latest
 
       - name: Login to Container registry on prod
-        run: ssh prod 'echo "${{ secrets.GITHUB_TOKEN }}" | sudo docker login ghcr.io -u "${{ github.actor }}" --password-stdin'
+        run: ssh prod 'echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u "${{ github.actor }}" --password-stdin'
 
       - name: Start app
         run: ssh prod 'cd app && touch githubwashere'
