@@ -48,7 +48,7 @@ jobs:
           docker push ghcr.io/mirorauhala/trade-back:latest
 
       - name: Login to Container registry on prod
-        run: ssh prod 'echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u "${{ github.actor }}" --password-stdin'
+        run: ssh prod 'echo "${{ secrets.GH_PAT }}" | docker login ghcr.io -u "${{ github.actor }}" --password-stdin'
 
       - name: Clone docker-compose
         run: rsync -azvhP --delete $GITHUB_WORKSPACE/docker-compose-prod.yml prod:/home/github/app
@@ -56,37 +56,37 @@ jobs:
       - name: Start app
         run: ssh prod 'cd app && touch githubwashere'
 
-      - name: Checkout
-        uses: actions/checkout@v3.1.0
-      - run: |
-          rm -rf .git
+      # - name: Checkout
+      #   uses: actions/checkout@v3.1.0
+      # - run: |
+      #     rm -rf .git
 
-      - name: "Commit: frontend"
-        uses: actions/checkout@v3
-        with:
-          repository: mirorauhala/trade-front
-          path: deploy-frontend
-          token: ${{ secrets.GH_PAT }}
-      - run: |
-          rsync -av --delete --exclude=.git frontend/ deploy-frontend/
-          cd deploy-frontend
-          git config user.name github-actions
-          git config user.email github-actions@github.com
-          git add .
-          git commit -m "Sync: $(date +"%Y-%m-%dT%H:%M:%S")"
-          git push
+      # - name: "Commit: frontend"
+      #   uses: actions/checkout@v3
+      #   with:
+      #     repository: mirorauhala/trade-front
+      #     path: deploy-frontend
+      #     token: ${{ secrets.GH_PAT }}
+      # - run: |
+      #     rsync -av --delete --exclude=.git frontend/ deploy-frontend/
+      #     cd deploy-frontend
+      #     git config user.name github-actions
+      #     git config user.email github-actions@github.com
+      #     git add .
+      #     git commit -m "Sync: $(date +"%Y-%m-%dT%H:%M:%S")"
+      #     git push
 
-      - name: "Commit: backend"
-        uses: actions/checkout@v3
-        with:
-          repository: mirorauhala/trade-back
-          path: deploy-backend
-          token: ${{ secrets.GH_PAT }}
-      - run: |
-          rsync -av --delete --exclude=.git strapi/ deploy-backend/
-          cd deploy-backend
-          git config user.name github-actions
-          git config user.email github-actions@github.com
-          git add .
-          git commit -m "Sync: $(date +"%Y-%m-%dT%H:%M:%S")"
-          git push
+      # - name: "Commit: backend"
+      #   uses: actions/checkout@v3
+      #   with:
+      #     repository: mirorauhala/trade-back
+      #     path: deploy-backend
+      #     token: ${{ secrets.GH_PAT }}
+      # - run: |
+      #     rsync -av --delete --exclude=.git strapi/ deploy-backend/
+      #     cd deploy-backend
+      #     git config user.name github-actions
+      #     git config user.email github-actions@github.com
+      #     git add .
+      #     git commit -m "Sync: $(date +"%Y-%m-%dT%H:%M:%S")"
+      #     git push
