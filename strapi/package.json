@@ -12,7 +12,6 @@
   "dependencies": {
     "@strapi/plugin-i18n": "4.4.7",
     "@strapi/plugin-users-permissions": "4.4.7",
-    "@strapi/provider-upload-aws-s3": "^4.5.2",
     "@strapi/strapi": "4.4.7",
     "better-sqlite3": "7.4.6"
   },
