@@ -54,4 +54,4 @@ jobs:
         run: rsync -azvhP --delete $GITHUB_WORKSPACE/docker-compose-prod.yml prod:/home/github/app
 
       - name: Start app
-        run: ssh prod 'cd app && docker-compose -f docker-compose-prod.yml pull && docker-compose -f docker-compose-prod.yml up -d'
+        run: ssh prod 'cd app && docker compose -f docker-compose-prod.yml pull && docker compose -f docker-compose-prod.yml up -d'
