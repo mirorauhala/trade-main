@@ -69,6 +69,7 @@ services:
       - DATABASE_FILENAME=${DATABASE_FILENAME}
     volumes:
       - ./strapi-data:/data
+      - ./uploads:/opt/app/public/uploads
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.strapi.rule=Host(`strapi.gemeinsam-stark.tk`)"
