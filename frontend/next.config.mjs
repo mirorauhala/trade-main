@@ -18,6 +18,18 @@ const config = {
         port: "1337",
         pathname: "/uploads/**",
       },
+      {
+        protocol: "https",
+        hostname: "gemeinsam-stark.tk",
+        port: "443",
+        pathname: "**",
+      },
+      {
+        protocol: "https",
+        hostname: "strapi.gemeinsam-stark.tk",
+        port: "443",
+        pathname: "**",
+      },
     ],
   },
 };
