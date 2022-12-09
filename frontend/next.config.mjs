@@ -11,6 +11,7 @@ const config = {
   swcMinify: true,
   output: "standalone",
   images: {
+    domains: ["gemeinsam-stark.tk", "strapi.gemeinsam-stark.tk"],
     remotePatterns: [
       {
         protocol: "http",
