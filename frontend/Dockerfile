@@ -20,6 +20,9 @@ COPY . .
 # Uncomment the following line in case you want to disable telemetry during the build.
 ENV NEXT_TELEMETRY_DISABLED 1
 ENV SKIP_ENV_VALIDATION=true
+ARG NEXT_PUBLIC_STRAPI_ENDPOINT_URL=https://strapi.gemeinsam-stark.tk
+ENV NEXT_PUBLIC_STRAPI_ENDPOINT_URL=${NODE_ENV}
+
 RUN npm rebuild
 RUN npm run build
 
