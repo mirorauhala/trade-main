@@ -93,7 +93,7 @@ const ExhPage = (props: ExhibitorsProps) => {
                           exhibitor.attributes.logo.data.attributes.url
                         : logo
                     }
-                    alt="img"
+                    alt=""
                     className="h-20 w-20 rounded-xl border-2 border-black object-cover"
                   />
                 </div>
