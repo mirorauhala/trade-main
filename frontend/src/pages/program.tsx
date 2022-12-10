@@ -1,5 +1,6 @@
 import { Heading } from "@/components";
 import { Grid } from "@/components/Grid";
+import Layout from "@/components/Layout";
 import { getProgram, type ProgramInterface } from "@/services";
 import Head from "next/head";
 
@@ -19,7 +20,7 @@ export async function getServerSideProps() {
 
 const Program = ({ program }: ProgramProps) => {
   return (
-    <div>
+    <Layout>
       <Head>
         <title>Program - WeAssist</title>
       </Head>
@@ -35,7 +36,7 @@ const Program = ({ program }: ProgramProps) => {
             </li>
           ))}
       </Grid>
-    </div>
+    </Layout>
   );
 };
 

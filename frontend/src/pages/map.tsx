@@ -36,7 +36,7 @@ const Map = ({ maps }: MapProps) => {
                   target="_blank"
                   rel="noopener noreferrer"
                   href={
-                    process.env.STRAPI_ENDPOINT_URL +
+                    clientEnv.NEXT_PUBLIC_STRAPI_ENDPOINT_URL +
                     mapitem.attributes.pdf_url.data.attributes.url
                   }
                 >
