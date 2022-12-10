@@ -1,4 +1,4 @@
-import { Map, Food, Exhibitors, Faq } from "@/components/Grid/icons";
+import { Map, Food, Exhibitors, Faq, Program } from "@/components/Grid/icons";
 import { createElement } from "react";
 
 const icons = {
@@ -6,6 +6,7 @@ const icons = {
   FOOD: Food,
   EXHIBITORS: Exhibitors,
   FAQ: Faq,
+  PROGRAM: Program,
 };
 
 type GridIconProps = {
