@@ -4,7 +4,7 @@ import Image from "next/image";
 import { DownloadIcon } from "@/components/Map";
 import Head from "next/head";
 import Layout from "@/components/Layout";
-import { clientEnv } from "@/env/schema.mjs";
+import { env } from "@/env/client.mjs";
 
 type MapProps = {
   maps: any;
@@ -36,7 +36,7 @@ const Map = ({ maps }: MapProps) => {
                   target="_blank"
                   rel="noopener noreferrer"
                   href={
-                    clientEnv.NEXT_PUBLIC_STRAPI_ENDPOINT_URL +
+                    env.NEXT_PUBLIC_STRAPI_ENDPOINT_URL +
                     mapitem.attributes.pdf_url.data.attributes.url
                   }
                 >
@@ -48,7 +48,7 @@ const Map = ({ maps }: MapProps) => {
               <div className="mt-4">
                 <Image
                   src={
-                    clientEnv.NEXT_PUBLIC_STRAPI_ENDPOINT_URL +
+                    env.NEXT_PUBLIC_STRAPI_ENDPOINT_URL +
                     mapitem.attributes.image_url.data.attributes.url
                   }
                   alt={mapitem.attributes.image_url.data.attributes.name}

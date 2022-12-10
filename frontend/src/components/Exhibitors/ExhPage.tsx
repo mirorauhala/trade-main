@@ -7,7 +7,7 @@ import SortBar from "@/components/SortBar";
 import logo from "@/images/logo.png";
 import { useMemo, useState } from "react";
 import { useLocalStorage } from "@/hooks";
-import { clientEnv } from "@/env/schema.mjs";
+import { env } from "@/env/client.mjs";
 
 interface ExhibitorsProps {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -89,7 +89,7 @@ const ExhPage = (props: ExhibitorsProps) => {
                   <Image
                     src={
                       exhibitor.attributes?.logo?.data?.attributes?.url
-                        ? clientEnv.NEXT_PUBLIC_STRAPI_ENDPOINT_URL +
+                        ? env.NEXT_PUBLIC_STRAPI_ENDPOINT_URL +
                           exhibitor.attributes.logo.data.attributes.url
                         : logo
                     }
