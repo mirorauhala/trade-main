@@ -19,7 +19,6 @@ export async function getServerSideProps() {
     } as MapProps,
   };
 }
-
 const Map = ({ maps }: MapProps) => {
   return (
     <Layout>
@@ -27,13 +26,12 @@ const Map = ({ maps }: MapProps) => {
         <title>Map - WeAssist</title>
       </Head>
       <Heading>Map</Heading>
-
       {maps.length > 0 &&
         maps.map((mapitem) => (
           <MapItem key={mapitem.id}>
             <div className="flex flex-row justify-between">
               <p className="text-2xl">{mapitem.attributes.name}</p>
-              {mapitem.attributes.pdf_url.data?.length > 0 && (
+              {mapitem.attributes.pdf_url && (
                 <a
                   target="_blank"
                   rel="noopener noreferrer"
@@ -46,7 +44,7 @@ const Map = ({ maps }: MapProps) => {
                 </a>
               )}
             </div>
-            {mapitem.attributes.image_url.data?.length > 0 && (
+            {mapitem.attributes.image_url && (
               <div className="mt-4">
                 <Image
                   src={
