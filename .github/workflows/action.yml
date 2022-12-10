@@ -38,7 +38,7 @@ jobs:
       - uses: actions/checkout@v3.1.0
       - name: Build frontend image
         run: |
-          docker build frontend --file ./frontend/Dockerfile --tag ghcr.io/mirorauhala/trade-front:latest
+          docker build frontend --build-arg NEXT_PUBLIC_STRAPI_ENDPOINT_URL="https://strapi.gemeinsam-stark.tk" --file ./frontend/Dockerfile --tag ghcr.io/mirorauhala/trade-front:latest
           docker push ghcr.io/mirorauhala/trade-front:latest
 
       - uses: actions/checkout@v3.1.0
