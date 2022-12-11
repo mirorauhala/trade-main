@@ -41,6 +41,12 @@
         }
       },
       "type": "time"
+    },
+    "program_date": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::program-date.program-date",
+      "inversedBy": "programs"
     }
   }
 }
