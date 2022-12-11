@@ -14,31 +14,22 @@ export async function getServerSideProps() {
     getHomeTexts(),
     getGridItems(),
   ]);
-  // voi kokeilla 'en' tai 'de'
-  const lang = "en";
 
   return {
     props: {
-      lang,
       homeTexts,
       gridItems,
     },
   };
 }
 
-const Home = ({ homeTexts, lang, gridItems }: HomeProps) => {
+const Home = ({ homeTexts, gridItems }: HomeProps) => {
   return (
     <Layout>
       <div>
         <Heading>
           {homeTexts ? (
-            <p className="text-2xl">
-              {
-                homeTexts.filter(
-                  (hometext) => hometext.attributes.language === lang
-                )[0].attributes.top_text
-              }
-            </p>
+            <p className="text-2xl">{homeTexts[0].attributes.top_text}</p>
           ) : (
             ""
           )}

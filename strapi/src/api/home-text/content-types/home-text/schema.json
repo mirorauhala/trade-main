@@ -14,13 +14,6 @@
   "attributes": {
     "top_text": {
       "type": "string"
-    },
-    "language": {
-      "type": "enumeration",
-      "enum": [
-        "en",
-        "de"
-      ]
     }
   }
 }
