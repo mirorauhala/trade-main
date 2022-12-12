@@ -19,6 +19,7 @@ export async function getServerSideProps() {
     } as MapProps,
   };
 }
+
 const Map = ({ maps }: MapProps) => {
   return (
     <Layout>
@@ -31,7 +32,7 @@ const Map = ({ maps }: MapProps) => {
           <MapItem key={mapitem.id}>
             <div className="flex flex-row justify-between">
               <p className="text-2xl">{mapitem.attributes.name}</p>
-              {mapitem.attributes.pdf_url && (
+              {mapitem.attributes.pdf_url.data && (
                 <a
                   target="_blank"
                   rel="noopener noreferrer"
