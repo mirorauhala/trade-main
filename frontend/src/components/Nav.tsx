@@ -53,7 +53,7 @@ export const Nav = () => {
       href: "/exhibitors",
       icon: ExhibitorDarkIcon,
       activeIcon: ExhibitorBlueIcon,
-      label: "Exhibitors",
+      label: "Aussteller",
       isActive: (pathname) => pathname.startsWith("/exhibitors"),
     },
     {
@@ -67,7 +67,7 @@ export const Nav = () => {
       href: "/map",
       icon: MapDarkIcon,
       activeIcon: MapBlueIcon,
-      label: "Map",
+      label: "Geländeplan",
       isActive: (pathname) => pathname.startsWith("/map"),
     },
   ];

@@ -1,6 +1,6 @@
 import { Heading } from "@/components";
 import Image from "next/image";
-import logo from "@/images/logo.png";
+import logo from "@/images/1x1logo.png";
 import Head from "next/head";
 import Layout from "@/components/Layout";
 import { env } from "@/env/client.mjs";
@@ -29,9 +29,9 @@ const Food = ({ food }: FoodProps) => {
   return (
     <Layout>
       <Head>
-        <title>Food - WeAssist</title>
+        <title>Verpflegung - WeAssist</title>
       </Head>
-      <Heading>Food</Heading>
+      <Heading>Verpflegung</Heading>
       {food.data.map((foodItem) => {
         return (
           <div key={foodItem.id} className="m-2 rounded-xl bg-gray-200 p-2">
@@ -58,7 +58,7 @@ const Food = ({ food }: FoodProps) => {
                   {foodItem.attributes.name}
                 </a>
                 {foodItem.attributes.location && (
-                  <p>location: {foodItem.attributes.location}</p>
+                  <p>Standort: {foodItem.attributes.location}</p>
                 )}
               </div>
             </div>

@@ -23,9 +23,9 @@ const Program = ({ program }: ProgramProps) => {
   return (
     <Layout>
       <Head>
-        <title>Program - WeAssist</title>
+        <title>Programm - WeAssist</title>
       </Head>
-      <Heading>Program</Heading>
+      <Heading>Programm</Heading>
       <Grid>
         {program.length > 0 &&
           program.map((item: ProgramsByDateInterface) => (

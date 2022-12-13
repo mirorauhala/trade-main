@@ -23,9 +23,9 @@ const Map = ({ maps }: MapProps) => {
   return (
     <Layout>
       <Head>
-        <title>Map - WeAssist</title>
+        <title>Geländeplan - WeAssist</title>
       </Head>
-      <Heading>Map</Heading>
+      <Heading>Geländeplan</Heading>
       {maps.length > 0 &&
         maps.map((mapitem) => (
           <MapItem key={mapitem.id}>

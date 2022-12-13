@@ -5,7 +5,7 @@ interface SearchBarProps {
 
 const SortBar = ({ onSort }: SearchBarProps) => {
   return (
-    <div className="flex flex-row items-center rounded-xl border-2 border-black bg-white p-2">
+    <div className="flex flex-row items-center rounded-xl border-2 border-black bg-white p-2 h-14">
       <svg
         xmlns="http://www.w3.org/2000/svg"
         fill="none"
@@ -28,8 +28,8 @@ const SortBar = ({ onSort }: SearchBarProps) => {
           onSort(event?.target.value as "alphabet" | "industry")
         }
       >
-        <option value="alphabet">By alphabet</option>
-        <option value="industry">By industry</option>
+        <option value="alphabet">Alphabet</option>
+        <option value="industry">Industrie</option>
       </select>
     </div>
   );

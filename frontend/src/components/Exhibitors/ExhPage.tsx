@@ -4,7 +4,7 @@ import Image from "next/image";
 import Heart from "@/components/Heart";
 import SearchBar from "@/components/SearchBar";
 import SortBar from "@/components/SortBar";
-import logo from "@/images/logo.png";
+import logo from "@/images/1x1logo.png";
 import { useMemo, useState } from "react";
 import { useLocalStorage } from "@/hooks";
 import { env } from "@/env/client.mjs";
@@ -35,9 +35,17 @@ const ExhPage = (props: ExhibitorsProps) => {
 
   const queriedExhibitors = useMemo(() => {
     return exhibitors.filter((exhibitor) => {
-      return exhibitor.attributes.name
-        .toLowerCase()
-        .includes(query.toLowerCase());
+      return (
+        exhibitor.attributes.name.toLowerCase().includes(query.toLowerCase()) ||
+        (exhibitor.attributes.industry_type &&
+          exhibitor.attributes.industry_type
+            .toLowerCase()
+            .includes(query.toLowerCase())) ||
+        (exhibitor.attributes.location &&
+          exhibitor.attributes.location
+            .toLowerCase()
+            .includes(query.toLowerCase()))
+      );
     });
   }, [exhibitors, query]);
 
@@ -50,15 +58,31 @@ const ExhPage = (props: ExhibitorsProps) => {
   }, [showFavourites, queriedExhibitors, liked]);
 
   const orderedExhibitors = useMemo(() => {
+    let tempArray = filteredExhibitors;
     if (orderType === "alphabet") {
-      return filteredExhibitors.sort((a, b) =>
-        a.attributes.name < b.attributes.name ? -1 : 1
-      );
+      tempArray = filteredExhibitors.sort((a, b) => {
+        if (a.attributes.name > b.attributes.name) {
+          return 1;
+        }
+        if (a.attributes.name < b.attributes.name) {
+          return -1;
+        }
+
+        return 0;
+      });
     } else if (orderType === "industry") {
-      return filteredExhibitors.sort((a, b) =>
-        a.attributes.industry_type < b.attributes.industry_type ? -1 : 1
-      );
+      tempArray = filteredExhibitors.sort((a, b) => {
+        if (a.attributes.industry_type < b.attributes.industry_type) {
+          return -1;
+        }
+        if (a.attributes.industry_type > b.attributes.industry_type) {
+          return 1;
+        }
+
+        return 0;
+      });
     }
+    return tempArray;
   }, [orderType, filteredExhibitors]);
 
   return (
@@ -76,7 +100,7 @@ const ExhPage = (props: ExhibitorsProps) => {
         className="flex w-full flex-row justify-center gap-1 py-2 text-center"
         onClick={() => setShowFavourites(!showFavourites)}
       >
-        Show favourited
+        Meine Favoriten anzeigen
         <Heart isChecked={showFavourites} />
       </button>
 
@@ -94,6 +118,8 @@ const ExhPage = (props: ExhibitorsProps) => {
                         : logo
                     }
                     alt=""
+                    width={80}
+                    height={80}
                     className="h-20 w-20 rounded-xl border-2 border-black object-cover"
                   />
                 </div>
@@ -128,7 +154,7 @@ const ExhPage = (props: ExhibitorsProps) => {
 
                   {exhibitor.attributes?.location && (
                     <p className=" mr-2 inline-flex">
-                      Location: {exhibitor.attributes.location}
+                      Standort: {exhibitor.attributes.location}
                     </p>
                   )}
                 </div>
