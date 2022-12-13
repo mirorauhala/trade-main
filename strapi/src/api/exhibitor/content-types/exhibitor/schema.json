@@ -32,7 +32,8 @@
       "type": "string"
     },
     "industry_type": {
-      "type": "string"
+      "type": "string",
+      "required": true
     },
     "description": {
       "type": "text"

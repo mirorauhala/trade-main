@@ -13,7 +13,7 @@ const SearchBar = (props: SearchBarProps) => {
   };
 
   return (
-    <div className="flex flex-row items-center rounded-xl border-2 border-black bg-white">
+    <div className="flex flex-row items-center rounded-xl border-2 border-black bg-white h-14">
       <svg
         xmlns="http://www.w3.org/2000/svg"
         fill="none"
@@ -31,7 +31,7 @@ const SearchBar = (props: SearchBarProps) => {
 
       <input
         className="w-full rounded-xl py-3 placeholder:text-slate-500 focus:outline-none"
-        placeholder="Search"
+        placeholder="Suche"
         onChange={onChange}
       />
     </div>

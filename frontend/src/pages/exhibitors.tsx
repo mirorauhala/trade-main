@@ -25,9 +25,9 @@ const Exhibitors = ({ exhibitors }: ExhibitorsProps) => {
   return (
     <Layout>
       <Head>
-        <title>Exhibitors - WeAssist</title>
+        <title>Aussteller - WeAssist</title>
       </Head>
-      <Heading>Exhibitors</Heading>
+      <Heading>Aussteller</Heading>
       <ExhPage exhibitors={exhibitors} />
     </Layout>
   );
